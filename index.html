@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tralalero Tralala</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(ellipse at center, #1e1e2f, #0a0a14);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .image-container {
+      position: relative;
+      padding: 20px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      animation: float 4s ease-in-out infinite;
+      transition: transform 0.3s;
+    }
+
+    .image-container:hover {
+      transform: scale(1.03);
+    }
+
+    .image-container::before {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      z-index: -1;
+      background: linear-gradient(135deg, #ff4ecd, #0070f3, #00ffe0);
+      border-radius: inherit;
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulseGlow 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.6;
+        filter: blur(20px);
+      }
+      50% {
+        opacity: 1;
+        filter: blur(30px);
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .caption {
+      margin-top: 15px;
+      color: #ffffffcc;
+      text-align: center;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="https://placekitten.com/500/400" alt="Tralalero Tralala">
+    <div class="caption">Tralalero Tralala</div>
+  </div>
+
+  <script>
+    // Optional JS: subtle image wiggle on click
+    const container = document.querySelector('.image-container');
+    container.addEventListener('click', () => {
+      container.style.animation = 'shake 0.4s ease';
+      setTimeout(() => {
+        container.style.animation = '';
+      }, 400);
+    });
+
+    // Shake animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0% { transform: translate(0); }
+        25% { transform: translate(-5px, 5px); }
+        50% { transform: translate(5px, -5px); }
+        75% { transform: translate(-5px, 5px); }
+        100% { transform: translate(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
